@@ -41,27 +41,33 @@ menuB=["Beenden",
       "Verstecken",
       "Heiltrank",
       "Ducken"]
-      
+def cleverinput(miz=0,maz=5,default=0):
+    while True:
+        r=input("?")
+        if r =="":
+            return default
+        if r.isdigit():
+            r=int(r)
+            if r <miz or r>maz:
+                print("BLÖDESTE ZAHL EVER")
+                continue
+            return r
 
 
 
 while bhp > 0 and ghp > 0:
     runde = runde + 1
     print("AU!!!",b,"hat noch",bhp,"leben übrig")
-    while True:
-        for x in menuA:
-            print(menuA.index(x),x)
-        x=input()
-        if x < "0" or x > "6" or len(x)>1:
-            print("Falsche Eingabe!!!!")
-            continue
-        else:
-            print("OK")
-            break
-    if x =="0":
+    #while True:
+    for x in menuA:
+        print(menuA.index(x),x)
+    x=cleverinput(miz=0,maz=5,default=0)
+    
+            
+    if x ==0:
         break
   
-    elif x =="1":
+    elif x ==1:
         print("Du versuchst den ULTIMATIVEN ANGRIFF")
         treffer=random.random()
         if treffer < krit:
@@ -71,39 +77,26 @@ while bhp > 0 and ghp > 0:
             bhp=bhp-schaden
         else:
             print("Angriff fehlgeschlagen")
-    elif x=="2":
+    elif x==2:
         print("Goblin greift an! Runde:",runde)
         schaden=random.randint(0,maxschaden)
         print(b,"erleidet",schaden,"schaden")
         bhp=bhp-schaden 
     #Drache schlägt zurück
-    ducken=False
-    ausweichen=False
-    verstecken=False
-    while True:
-        for x in menuB:
+    
+    
+    for x in menuB:
             print(menuB.index(x),x)
-        x=input()
-        if x < "0" or x > "6" or len(x)>1:
-            print("Falsche Eingabe!!!!")
-            continue
-        else:
-            print("Gut!")
-            break
+    x=cleverinput(miz=0,maz=6,default=0)
         
 
-    if x =="0":
+    if x ==0:
         break
-    elif x=="3":
+    elif x==3:
         print ("Du bekommst 5 Herzen zurück")
         ghp=ghp+5
         print("Du bist Geheilt und hast jetzt", ghp,"Herzen")
-    elif x =="4":
-        ducken=True
-    elif x =="1":
-        ausweichen=True
-    elif x =="2":
-        verstecken=True
+   
     
     action=random.choice(DrachenAction)
     if action == "Feuer":
