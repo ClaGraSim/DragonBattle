@@ -1,9 +1,9 @@
 import random
 
 
-###Schadensmodel###
+###Schadensmodell###
 ###Heiltrank=1###
-###Ausweichen+Feurer=0.5###
+###Ausweichen+Feuer=0.5###
 ###Ausweichen+Biss=0###
 ###Ausweichen+Klaue=1###
 
@@ -57,7 +57,7 @@ def cleverinput(miz=0,maz=5,default=0):
 
 while bhp > 0 and ghp > 0:
     runde = runde + 1
-    print("AU!!!",b,"hat noch",bhp,"leben übrig")
+    print("AU!!!",b,"hat noch",bhp,"Leben übrig")
     #while True:
     for x in menuA:
         print(menuA.index(x),x)
@@ -71,16 +71,16 @@ while bhp > 0 and ghp > 0:
         print("Du versuchst den ULTIMATIVEN ANGRIFF")
         treffer=random.random()
         if treffer < krit:
-            print("HURAAA!!!")
+            print("HURRAAA!!!")
             schaden=maxschaden*3
-            print(b,"erleidet",schaden,"schaden")
+            print(b,"erleidet",schaden,"Schaden")
             bhp=bhp-schaden
         else:
             print("Angriff fehlgeschlagen")
     elif x==2:
         print("Goblin greift an! Runde:",runde)
         schaden=random.randint(0,maxschaden)
-        print(b,"erleidet",schaden,"schaden")
+        print(b,"erleidet",schaden,"Schaden")
         bhp=bhp-schaden 
     #Drache schlägt zurück
     
@@ -95,12 +95,12 @@ while bhp > 0 and ghp > 0:
     elif x==3:
         print ("Du bekommst 5 Herzen zurück")
         ghp=ghp+5
-        print("Du bist Geheilt und hast jetzt", ghp,"Herzen")
+        print("Du bist geheilt und hast jetzt", ghp,"Herzen")
    
     
     action=random.choice(DrachenAction)
     if action == "Feuer":
-        print("Der Drache spukt Feurer")
+        print("Der Drache spuckt Feuer")
     elif action == "Klaue":
         print("Der Drache schlägt nach dir")
     elif action == "Biss":
@@ -112,7 +112,7 @@ while bhp > 0 and ghp > 0:
     else:
         print("Schlechte Idee")
     ghp=ghp-schaden
-    print("Du erleidest schaden:",schaden)
+    print("Du erleidest Schaden:",schaden)
     print("Du hast noch",ghp,"Leben")
     print("<3"*int(ghp))
     
